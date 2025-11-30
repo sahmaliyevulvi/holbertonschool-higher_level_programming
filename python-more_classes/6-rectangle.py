@@ -12,7 +12,7 @@ keeps track of the number of instances.
 class Rectangle:
     """Defines a rectangle."""
 
-    number_of_instances = 0  # public class attribute
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle with optional width and height."""
@@ -61,22 +61,18 @@ class Rectangle:
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """Return the string representation of the rectangle using '#'."""
+        """Return the rectangle using '#' characters."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        rect_lines = [
-            "#" * self.__width
-            for _ in range(self.__height)
-        ]
-        return "\n".join(rect_lines)
+        return "\n".join(
+            ["#" * self.__width for _ in range(self.__height)]
+        )
 
     def __repr__(self):
         """Return a string representation to recreate a new instance."""
-        w = str(self.__width)
-        h = str(self.__height)
-        return ("Rectangle(" + w + ", " + h + ")")
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
-        """Print a message when an instance is deleted and update instance count."""
+        """Print a message when an instance is deleted."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
