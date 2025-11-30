@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Rectangle class with width, height and utils."""
+"""Rectangle class."""
 
 
 class Rectangle:
@@ -16,24 +16,24 @@ class Rectangle:
         return self.__width
 
     @width.setter
-    def width(self, v):
-        if not isinstance(v, int):
+    def width(self, value):
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
-        if v < 0:
+        if value < 0:
             raise ValueError("width must be >= 0")
-        self.__width = v
+        self.__width = value
 
     @property
     def height(self):
         return self.__height
 
     @height.setter
-    def height(self, v):
-        if not isinstance(v, int):
+    def height(self, value):
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        if v < 0:
+        if value < 0:
             raise ValueError("height must be >= 0")
-        self.__height = v
+        self.__height = value
 
     def area(self):
         return self.__width * self.__height
@@ -57,9 +57,9 @@ class Rectangle:
         Rectangle.number_of_instances -= 1
 
     @staticmethod
-    def bigger_or_equal(r1, r2):
-        if not isinstance(r1, Rectangle):
+    def bigger_or_equal(rect_1, rect_2):
+        if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
-        if not isinstance(r2, Rectangle):
+        if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
-        return r1 if r1.area() >= r2.area() else r2
+        return rect_1 if rect_1.area() >= rect_2.area() else rect_2
