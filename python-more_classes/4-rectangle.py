@@ -48,7 +48,9 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Return the perimeter of the rectangle. Return 0 if width or height is 0."""
+        """Return the perimeter of the rectangle.
+        Return 0 if width or height is 0.
+        """
         if self.__width == 0 or self.__height == 0:
             return 0
         return 2 * (self.__width + self.__height)
@@ -57,11 +59,14 @@ class Rectangle:
         """Return the string representation of the rectangle using '#'."""
         if self.__width == 0 or self.__height == 0:
             return ""
-        rect_lines = ["#" * self.__width for _ in range(self.__height)]
+        rect_lines = [
+            "#" * self.__width
+            for _ in range(self.__height)
+        ]
         return "\n".join(rect_lines)
 
     def __repr__(self):
-        """Return a string representation that can recreate a new instance using eval()."""
+        """Return a string representation to recreate a new instance."""
         return ("Rectangle({}, {})"
                 .format(self.__width,
                         self.__height))
