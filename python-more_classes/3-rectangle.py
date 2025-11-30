@@ -59,17 +59,12 @@ class Rectangle:
         """Return the string representation of the rectangle using '#'."""
         if self.__width == 0 or self.__height == 0:
             return ""
-
-        rect = []
-        for _ in range(self.__height):
-            rect.append("#" * self.__width)
-        return "\n".join(rect)
+        return "\n".join(["#" * self.__width for _ in range(self.__height)])
 
     def __repr__(self):
-        """Return a formal string representation."""
-        return "<{}-{}.{} object at {}>".format(
-            __file__.split('/')[-1].split('.')[0],
+        """Return the formal string representation of the rectangle."""
+        return "<{}.{} object at {}>".format(
+            self.__class__.__module__,
             self.__class__.__name__,
-            self.__class__.__name__.lower(),
             hex(id(self))
         )
