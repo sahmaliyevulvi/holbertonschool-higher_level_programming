@@ -1,8 +1,13 @@
 #!/usr/bin/python3
+"""
+Rectangle module
+Defines a Rectangle class with width, height, instance counter,
+print_symbol, area, perimeter, and comparison utilities.
+"""
 
 
 class Rectangle:
-    """Defines a rectangle."""
+    """Defines a rectangle"""
 
     number_of_instances = 0
     print_symbol = "#"
@@ -14,7 +19,6 @@ class Rectangle:
 
     @property
     def width(self):
-        """Retrieve width."""
         return self.__width
 
     @width.setter
@@ -38,28 +42,25 @@ class Rectangle:
         self.__height = value
 
     def area(self):
-        """Return area of the rectangle."""
-        return self.__width * self.__height
+        return self.width * self.height
 
     def perimeter(self):
-        """Return perimeter; 0 if width or height is 0."""
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return 0
-        return 2 * (self.__width + self.__height)
+        return 2 * (self.width + self.height)
 
     def __str__(self):
-        if self.__width == 0 or self.__height == 0:
+        if self.width == 0 or self.height == 0:
             return ""
         symbol = str(self.print_symbol)
-        lines = [symbol * self.__width for _ in range(self.__height)]
-        return "\n".join(lines)
+        return "\n".join(symbol * self.width for _ in range(self.height))
 
     def __repr__(self):
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        return "Rectangle({}, {})".format(self.width, self.height)
 
     def __del__(self):
-        print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
@@ -74,4 +75,5 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
+        """Return square (width == height == size)"""
         return cls(size, size)
