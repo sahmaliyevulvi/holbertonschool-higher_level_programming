@@ -1,0 +1,21 @@
+<h1>Product List</h1>
+{% if error_message %}
+{{error_message}}
+{% else%}
+    <table width="350px" height="100px" border="1">
+        <tr>
+          {% for i in table_heads %}
+          <th>{{i}}</th>
+          {% endfor %}
+        </tr>
+
+        {% for item in table_items %}
+
+        <tr>
+          {% for key in table_heads %}
+              <td>{{item[key]}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
